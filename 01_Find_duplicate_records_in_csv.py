@@ -64,7 +64,7 @@ def find_and_print(csv_filepath, key_columns=None):
 if __name__ == "__main__":
     csv_file = input("Enter the path to the CSV file: ")
     try:
-        key_column_input = input("Enter the key columns (comma-separated, or press Enter for all columns): ")
+        key_column_input = input("Enter the key columns(headers) (comma-separated, or press Enter for all columns): ")
         if key_column_input:
             key_columns = [int(col.strip()) if col.strip() else col.strip() for col in key_column_input.split('.')]
         else:
