@@ -38,3 +38,38 @@ word2vec_vectors.most_similar([sims])
 sims = word2vec_vectors["Messi"] - word2vec_vectors["football"] + word2vec_vectors["cricket"]
 word2vec_vectors.most_similar([sims])
 
+
+# OR
+
+from gensim.models import Word2Vec, KeyedVectors
+import pandas as pd
+import nltk
+import kagglehub
+
+
+nltk.download('punkt')
+
+# Get the dataset from Kaggle
+# path = kagglehub.dataset_download("rootuser/worldnews-on-reddit")
+# print("Path to dataset files:", path)
+# Will be downloaded to : C:\Users\<User>\.cache\kagglehub\datasets\rootuser\worldnews-on-reddit\versions\1
+
+df = pd.read_csv('reddit_worldnews_start_to_2016-11-22.csv')
+
+df.head()
+
+newsTitles = df['title'].values
+newsTitles
+
+newsVec = [nltk.word_tokenize(title) for title in newsTitles]
+newsVec
+
+model = Word2Vec(newsVec, min_count=5, window=5, vector_size=100, workers=4)
+
+
+vector = model.wv['man']
+sims = model.wv.most_similar('man', topn=10)
+sims
+
+sims1 = model.wv.most_similar('police', topn=10)
+sims1
