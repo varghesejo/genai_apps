@@ -1,6 +1,13 @@
 # 5. create a simple python program to print the list of models in 
 # ChatGPT, Gemini and hugging face?
 
+# Create the python env for executing the code
+# conda create --prefix <path with env name> pip ipykernel 
+
+# Activate the python environment and install the required dependency packages
+# conda activate <env_name>
+# pip/conda install python-dotenv google-generativeai requests mistralai grpcio
+
 import os
 import getpass
 from dotenv import load_dotenv # pip install python-dotenv
@@ -9,18 +16,17 @@ import google.generativeai as genai # pip install google-generativeai
 import requests # pip install requests
 from mistralai import Mistral # pip install mistralai
 
-
 def list_gemini_models():
     # setting the Google Gemini api key
     if not os.environ.get("GOOGLE_API_KEY"):
         os.environ["GOOGLE_API_KEY"] = getpass.getpass("Enter API key for Google Gemini: ")
     genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
 
-    print("List of Google Gemini Models: ")
+    print("\nList of Google Gemini Models: ")
     gemini_model_list = genai.list_models()
 
     for gmodel in gemini_model_list:
-        print(gmodel.name)
+        print("\t", gmodel.name)
 
 def list_huggingface_models():
     query = "llama"
@@ -47,8 +53,8 @@ def list_mistralai_models():
 
 def main():
     load_dotenv()
-    #list_gemini_models()
-    #list_huggingface_models()
+    list_gemini_models()
+    list_huggingface_models()
     list_mistralai_models()
 
 if __name__ == "__main__":
