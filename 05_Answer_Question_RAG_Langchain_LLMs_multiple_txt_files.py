@@ -8,6 +8,7 @@
 # so using python 3.12.x based environment for installing the libraries
 
 # Install the required libraries
+#	conda install -c conda-forge python-dotenv
 #	conda install -c conda-forge langchain
 #	conda install -c conda-forge langchain-community 
 #	conda install -c conda-forge transformers
