@@ -13,7 +13,10 @@ from transformers import AutoTokenizer, AutoModelForCausalLM
 from tabulate import tabulate
 
 # Function to load multiple Excel sheets into a single DataFrame
-def load_excel_sheets(folder_path):
+def load_excel_sheets():
+    #folder_path = "path/to/excel/files"
+    path = input("\nEnter the folder path containing Excel files: ")
+    folder_path = os.path.realpath(path)
     all_dataframes = []
     
     for file in os.listdir(folder_path):
@@ -104,9 +107,7 @@ def answer_user_queries(llm, embedding_model, index, text_data):
 
 def main():
     # Load Excel files
-    #folder_path = "path/to/excel/files"
-    folder_path = os.path.realpath(".")
-    df = load_excel_sheets(folder_path)
+    df = load_excel_sheets()
     print(df.head())  # Preview data
 
     text_data = dataframe_to_text(df)
