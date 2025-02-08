@@ -1,9 +1,15 @@
-# Assignment1:  Implement a question answering system with RAG, word embedding, vector database, langchain, llm and any other tools 
+# Assignment1:  Implement a question answering system with RAG, word embedding, 
+# vector database, langchain, llm and any other tools 
 
-# Dependencies:
-# pip install -qU langchain-groq 
-# pip install -qU langchain-huggingface 
-
+# Install the required libraries
+#	conda install -c conda-forge python-dotenv
+#	conda install -c conda-forge langchain
+#	conda install -c conda-forge langchain-community 
+#   conda install -c conda-forge langchain-groq 
+#   conda install -c conda-forge langchain-huggingface 
+#   conda install python-dotenv 
+#   conda install langgraph
+#   pip install beautifulsoup4
 
 # import libraries
 import getpass 
