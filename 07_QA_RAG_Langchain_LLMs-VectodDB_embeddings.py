@@ -9,7 +9,7 @@
 #   conda install -c conda-forge langchain-huggingface 
 #   conda install python-dotenv 
 #   conda install langgraph
-#   pip install beautifulsoup4
+#   pip install beautifulsoup4 typing-extensions
 
 # import libraries
 import getpass 
@@ -101,10 +101,9 @@ def main():
     graph = graph_builder.compile() 
 
     print("\nQuestion-Answering System is ready to use!\n\n")
-    print("<<TOPIC>> : 'LLM Powered Autonomous Agents blog post' \n")
-    print("Ask your questions about this topic \n\n")
+    print("Ask your questions about 'LLM Powered Autonomous Agents blog post' \n\n")
     while True:
-        query = input("Question:>>> ")
+        query = input("Enter your question:>>> ")
         if not query:
             print("\nNot a valid query...Exiting the system!")
             break
@@ -113,3 +112,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# query : What is the main idea of the blog post?
+# query : What is Task Decomposition?
