@@ -39,13 +39,15 @@ def find_and_print(csv_filepath, key_columns=None):
                     seen.add(key)
             
             if dupplicates:
-                print("Duplicate records found:")
+                print("\n\nDuplicate records found:")
                 # Print header once
-                print(",".join(reader.fieldnames))
+                print("Field Names: ")
+                print(",".join(reader.fieldnames), "\n")
                 printed_keys = set() #set to track the printed duplicates
-                for duplicate in dupplicates:
+                for indx, duplicate in enumerate(dupplicates):
                     key = tuple(duplicate[col] for col in key_columns)
                     if key not in printed_keys: # print only once
+                        print(f"Duplicate {indx+1}:")
                         print(",".join(duplicate.values()))
                         printed_keys.add(key)
             else:
@@ -64,9 +66,11 @@ def find_and_print(csv_filepath, key_columns=None):
 if __name__ == "__main__":
     csv_file = input("Enter the path to the CSV file: ")
     try:
-        key_column_input = input("Enter the key columns(headers) to compare (comma-separated, or press Enter for all columns): ")
+        # enhancement - allow user to input column names or indices
+        #key_column_input = input("Enter the key columns(headers) to compare (comma-separated, or press Enter for all columns): ")
+        key_column_input = ""
         if key_column_input:
-            key_columns = [int(col.strip()) if col.strip() else col.strip() for col in key_column_input.split('.')]
+            key_columns = [int(col.strip()) if col.strip() else col.strip() for col in key_column_input.split(',')]
         else:
             key_columns = None
         find_and_print(csv_file, key_columns)
